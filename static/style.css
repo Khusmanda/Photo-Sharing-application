@@ -1,0 +1,185 @@
+body {
+  font-family: "helvetica", sans-serif;
+  margin:0 auto; 
+}
+
+/* -------------------------- nav bar/ sidebar ------------------------------ */
+.sidenav {
+  height: 100%;
+  width: 220px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #006bb3;
+  overflow-x: hidden;
+  padding-top: 40px;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #fff;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #000;
+}
+
+.sidenav button{
+  padding: 10px;
+  margin:5px;
+}
+
+
+.main {
+  margin-left: 300px; /* Same as the width of the sidenav */
+  margin-top: 65px;
+  padding: 0px 0px;
+}
+
+.main h1{
+  text-align: center;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+/* -------------------------- main -------------------------------*/
+
+#login-info{
+  padding: 5px;
+  width: 75%;
+}
+#login-info p{
+  align-content: center;
+}
+/* ----------------------- side by side boxes -------------------*/
+* {
+  box-sizing: border-box;
+}
+
+.adding {
+  display: flex;
+  justify-content: center;
+  margin:20px;
+}
+
+.adding > div {
+  background-color: #42ecf8;
+  width: 30%;
+  height:120px;
+  margin: 40px;
+  padding-top: 10px;
+  text-align: center;
+  line-height: 75px;
+  font-size: 30px;
+}
+
+@media screen and (max-width: 750px) {
+  .column {
+    display: flex;
+    flex-direction: row;
+    margin:20px;
+  }
+
+  .adding > div {
+    width: 100%;
+    display: flex;
+    font-size: 15px;
+  }
+
+}
+/*---------------------------------------------*/
+.myupload{
+  border: 2px solid aqua;
+  border-radius: 12px;
+  padding: 5px;
+  width: 50%;
+  margin-left: 50px;
+}
+
+.listing {
+  display: grid;
+  gap: 50px 100px;
+  grid-template-columns: auto auto auto;
+  padding: 10px;
+}
+
+.listing > div  {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 2px solid aqua;
+  border-radius: 12px;
+  padding: 20px;
+  font-size: 15px;
+  text-align: center;
+}
+
+#enlarge {
+  width: 200px;
+  height:150px;
+
+}
+
+.mybutton {
+  padding:10px;
+  background-color: aqua;
+  border-radius: 12px;
+}
+
+.textinput {
+  padding:10px;
+  border-radius: 12px;
+  margin-top: 4px;
+  width:300px;
+}
+
+.mybox{
+  border: 2px solid aqua;
+  border-radius: 12px;
+  padding: 20px;
+  font-size: 30px;
+  
+}
+
+.listing > div a{
+	text-decoration:none;
+  color: #000;
+}
+
+.myline{
+  border: 10px solid rgb(127, 127, 130);
+  margin-left: 150px;
+  margin-top: 40px;
+  border-radius: 12px;
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.flex-container .mybox {
+  background-color: #f1f1f1;
+  width: 50%;
+  margin: 30px;
+  text-align: center;
+  line-height: 75px;
+  font-size: 30px;
+}
+
+#enlarge {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#enlarge:hover {
+  transform: scale(4);
+}
+
+

@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+  <title>Datastore and Firebase Auth Example</title>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth.css" />
+</head>
+<body>
+  <!-- Side navigation -->
+  <div class="sidenav">
+    <a href="#">{% if user_data %} {{ user_data['name'] }} {% else %} Login {% endif %}</a>
+    <a href="#">Storage: {{ mystorage }} MB</a>
+    <a href="#" id="sign-out">Signout</a>
+    
+  </div>
+
+  <div class = "main">
+
+
+    <div id="firebase-auth-container"></div>
+
+    <div id="login-info" hidden="true">
+          {% if user_data %}
+
+            <h1>Photos</h1>
+            <div class = "listing">
+              {% for i in file_list %}
+                <div>
+                  <form action="/delete_image/{{ i.name | replace(myuser, '') }}" method="post">
+                   <img src="https://storage.cloud.google.com/{{ mybucket }}/{{ myuser | replace('@','%40') | replace('/','')}}/{{ i.name | replace(myuser, '') }}" alt="{{ i.name | replace(myuser, '') }}" id = "enlarge"><br><br>{{ i.name | replace(myuser, '') }}<br><br> <input type="submit" value="Delete" class="mybutton"/>
+                  </form>
+                </div>
+
+                
+              {% endfor %}
+            </div>
+            
+            <h1>Gallery</h1>
+            <div class = "listing">
+              {% for i in directory_list %}
+              <div>
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                width="100" height="100"
+                viewBox="0 0 172 172"
+                style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#19ebde"><path d="M17.2,13.76c-5.68976,0 -10.32,4.63024 -10.32,10.32v20.64h3.44h151.36h3.44v-6.88c0,-5.68976 -4.63024,-10.32 -10.32,-10.32l-92.72547,0.02016c-0.95976,-0.34744 -2.9447,-3.50767 -4.0111,-5.20703c-2.63848,-4.21056 -5.37296,-8.57312 -9.90344,-8.57312zM10.32,51.6c-1.89888,0 -3.44,1.54112 -3.44,3.44v92.88c0,5.70008 4.61992,10.32 10.32,10.32h137.6c5.70008,0 10.32,-4.61992 10.32,-10.32v-92.88c0,-1.89888 -1.54112,-3.44 -3.44,-3.44z"></path></g></g></svg>
+                  <br><br>{{ i.name }}
+              </div>
+                
+              {% endfor %}
+            </div> 
+            
+
+            
+            
+            <div class="myline"></div>
+
+          
+            <div class="flex-container">
+
+              <div class = "mybox">
+                <form action="/add_directory" method="post">
+                  Gallery: <br><input type="text" name="dir_name" class="textinput"/><br><br>
+                  <input type="submit" value ="Create" class="mybutton"/>
+                </form>
+              </div>
+              
+              <div class = "mybox">
+                <form action="/upload_file" method="post" enctype="multipart/form-data">
+                  Image: <br><input type="file" name="image"  accept=".png,.jpg"/><br><br>
+                  <input type="submit" value ="Upload" class="mybutton"/>
+                </form>
+              </div>
+
+
+            </div>
+
+            
+
+          {% endif %}
+    </div>
+  
+  </div>
+
+    
+  <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-auth.js"></script>
+  <script src="{{ url_for('static', filename='app-setup.js') }}"></script>
+  
+
+</body>
+</html>
